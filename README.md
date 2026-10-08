@@ -46,4 +46,4 @@
 
 ## 许可
 
-见仓库内的 `LICENSE.txt`。
+本项目采用 **MIT License**，详见仓库内的 `LICENSE` 文件。
