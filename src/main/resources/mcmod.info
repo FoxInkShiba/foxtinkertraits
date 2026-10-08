@@ -1,0 +1,11 @@
+[
+  {
+    "modid": "foxtinkertraits",
+    "name": "Fox's Tinker Traits",
+    "description": "Adds configurable armor, tool and projectile traits for Tinkers' Construct and Construct's Armory: Demigod, Zeno's Turtle, Falling Blossom, Life Contract, Gas Mask, Super Gas Mask, Counterstrike, Auto Attack, Weapon Mastery and Multi Strike.",
+    "version": "1.0",
+    "mcversion": "1.12.2",
+    "authorList": ["Fox"],
+    "dependencies": ["conarm", "tconstruct"]
+  }
+]

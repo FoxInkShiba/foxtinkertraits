@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.fox.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "mixins.fox.refmap.json",
+  "mixins": [
+    "MixinEntityDataManager",
+    "MixinEntityLivingBase",
+    "EntityLivingBaseAccessor",
+    "PotionAccessor"
+  ],
+  "client": [],
+  "server": []
+}

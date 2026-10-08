@@ -1,0 +1,85 @@
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net/' }
+        maven { url = 'https://repo.spongepowered.org/maven' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:3.+'
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
+apply plugin: 'org.spongepowered.mixin'
+
+version = '1.0'
+group = 'com.fox'
+archivesBaseName = 'foxtinkertraits'
+
+sourceCompatibility = targetCompatibility = '1.8'
+
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+minecraft {
+    mappings channel: 'stable', version: '39-1.12'
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.console.level', 'debug'
+            property 'mixin.debug.export', 'true'
+            property 'fml.coreMods.load', 'com.fox.FoxCorePlugin'
+            property 'mixin.env.disableRefMap', 'true'
+        }
+        server {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.console.level', 'debug'
+            property 'fml.coreMods.load', 'com.fox.FoxCorePlugin'
+        }
+    }
+}
+
+repositories {
+    maven { url = 'https://repo.spongepowered.org/maven' }
+    mavenCentral()
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2864'
+    compile('org.spongepowered:mixin:0.8.5') {
+        exclude module: 'guava'
+        exclude module: 'commons-io'
+        exclude module: 'gson'
+    }
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+mixin {
+    add sourceSets.main, 'mixins.fox.refmap.json'
+}
+
+jar {
+    manifest {
+        attributes(
+                "FMLCorePlugin": "com.fox.FoxCorePlugin",
+                "FMLCorePluginContainsFMLMod": "true",
+                "MixinConfigs": "mixins.fox.json",
+                "TweakClass": "org.spongepowered.asm.launch.MixinTweaker",
+                "TweakOrder": "0",
+                "ForceLoadAsMod": "true"
+        )
+    }
+}
+
+jar.finalizedBy('reobfJar')

@@ -1,0 +1,57 @@
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
+
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run
+
+# Files from Forge MDK
+forge*changelog.txt
+
+# ==== 第三方依赖源码/库（本地参考用，不入库）====
+/libs/
+
+# ==== 参考资料（根目录）====
+/net/
+/assets/
+/mod.txt
+/zn.en
+/all_code.txt
+/_ab.txt
+/_ah.txt
+/_armornbt.txt
+/_cas.txt
+/_rmh.txt
+/_rmi.txt
+/_th.txt
+/_thv.txt
+/_tinkersarmor_full.txt
+/abstractarmortrait.txt
+/armormodtrait.txt
+*.7z
+
+# ==== 工具目录 ====
+src/.reasonix/
+
+# ==== 旧项目残留（防止再被加入）====
+src/main/java/com/crashguard/
+src/main/java/no/particle/
+src/main/resources/mixins.no_particle.json
+src/main/resources/mixins.no_particle.refmap.json
+src/main/resources/pack.mcmeta
